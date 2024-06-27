@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: langflow-chatbot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run streamlit_app.py
+    envVars:
+      - key: LANGFLOW_API_URL
+        sync: false
+      - key: FLOW_ID
+        sync: false

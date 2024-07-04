@@ -12,7 +12,7 @@ except ImportError:
     warnings.warn("Langflow provides a function to help you upload files to the flow. Please install langflow to use it.")
     upload_file = None
 
-BASE_API_URL = "https://langflow-y83e.onrender.com/api/v1/run"
+BASE_API_URL = "https://langflow-y83e.onrender.com/all"
 FLOW_ID = "37cae1da-25bb-49dc-a1a0-a632d8c0e87d"
 ENDPOINT = ""
 

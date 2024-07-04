@@ -12,9 +12,9 @@ except ImportError:
     warnings.warn("Langflow provides a function to help you upload files to the flow. Please install langflow to use it.")
     upload_file = None
 
-BASE_API_URL = os.getenv('LANGFLOW_API_URL', 'https://langflow-y83e.onrender.com/api/v1/run')
-FLOW_ID = os.getenv('FLOW_ID', '37cae1da-25bb-49dc-a1a0-a632d8c0e87d')
-ENDPOINT = "" # You can set a specific endpoint name in the flow settings
+BASE_API_URL = "https://langflow-y83e.onrender.com/api/v1/run"
+FLOW_ID = "37cae1da-25bb-49dc-a1a0-a632d8c0e87d"
+ENDPOINT = ""
 
 # You can tweak the flow by adding a tweaks dictionary
 # e.g {"OpenAI-XXXXX": {"model_name": "gpt-4"}}

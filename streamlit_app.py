@@ -43,7 +43,3 @@ if prompt := st.chat_input("What is your question?"):
         st.markdown(assistant_response)
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": assistant_response})
-
-    # Display the raw response for debugging
-    # with st.expander("Debug - Raw API Response"):
-    #     st.json(response)

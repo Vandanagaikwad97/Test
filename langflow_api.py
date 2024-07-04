@@ -12,7 +12,7 @@ except ImportError:
     warnings.warn("Langflow provides a function to help you upload files to the flow. Please install langflow to use it.")
     upload_file = None
 
-BASE_API_URL = os.getenv('LANGFLOW_API_URL', 'http://127.0.0.1:7860/api/v1/run')
+BASE_API_URL = os.getenv('LANGFLOW_API_URL', 'https://langflow-y83e.onrender.com/all')
 FLOW_ID = os.getenv('FLOW_ID', '37cae1da-25bb-49dc-a1a0-a632d8c0e87d')
 ENDPOINT = "" # You can set a specific endpoint name in the flow settings
 

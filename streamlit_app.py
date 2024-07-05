@@ -31,16 +31,16 @@ if prompt := st.chat_input("What is your question?"):
     )  
     st.write("Debug - Raw response:", response)
 
-        assistant_response = "I'm sorry, I couldn't generate a response."
-        if isinstance(response, dict):
-            if "detail" in response:
-                st.error(f"API Error: {response['detail']}")
-            elif 'outputs' in response:
-                # ... (your existing parsing logic)
-            else:
-                st.warning("Unexpected response format from API")
+    assistant_response = "I'm sorry, I couldn't generate a response."
+    if isinstance(response, dict):
+        if "detail" in response:
+            st.error(f"API Error: {response['detail']}")
+        elif 'outputs' in response:
+            # ... (your existing parsing logic)
         else:
-            st.warning("Response is not a dictionary as expected")
+            st.warning("Unexpected response format from API")
+    else:
+        st.warning("Response is not a dictionary as expected")
 
     except requests.exceptions.RequestException as e:
         st.error(f"Error making request to Langflow API: {str(e)}")

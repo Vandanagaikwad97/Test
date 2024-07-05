@@ -39,15 +39,10 @@ if prompt := st.chat_input("What is your question?"):
             # ... (your existing parsing logic)
         else:
             st.warning("Unexpected response format from API")
-    else:
-        st.warning("Response is not a dictionary as expected")
+        else:
+            st.warning("Response is not a dictionary as expected")
 
-    except requests.exceptions.RequestException as e:
-        st.error(f"Error making request to Langflow API: {str(e)}")
-    except json.JSONDecodeError:
-        st.error("Error decoding JSON from API response")
-    except Exception as e:
-        st.error(f"An unexpected error occurred: {str(e)}")
+    
 
     with st.chat_message("assistant"):
         st.markdown(assistant_response)

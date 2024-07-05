@@ -14,7 +14,7 @@ except ImportError:
 
 
 # Use the base URL of your deployed Langflow instance
-BASE_URL = os.environ.get("LANGFLOW_API_URL", "https://langflow-y83e.onrender.com/all")
+BASE_URL = os.environ.get("LANGFLOW_API_URL", "https://langflow-y83e.onrender.com")
 BASE_API_URL = f"{BASE_URL}/api/v1/process"  # Note the change from /run to /process
 FLOW_ID = os.environ.get("LANGFLOW_FLOW_ID", "37cae1da-25bb-49dc-a1a0-a632d8c0e87d")
 
@@ -31,28 +31,37 @@ TWEAKS = {
   "GroqModel-TLpDz": {},
   "Prompt-AiMeD": {}
 }
-
 def run_flow(message: str,
              endpoint: str,
              output_type: str = "chat",
              input_type: str = "chat",
              tweaks: Optional[dict] = None,
              api_key: Optional[str] = None) -> dict:
-    api_url = f"{BASE_API_URL}/{endpoint}"
+    # Use BASE_API_URL directly, don't append endpoint
+    api_url = BASE_API_URL
+    
+    print(f"Debug - API URL: {api_url}")
     
     payload = {
         "inputs": {
             "text": message
         },
-        "flow_id": FLOW_ID,
+        "flow_id": endpoint,  # Use the endpoint parameter as the flow_id
         "tweaks": tweaks or {}
     }
+    
+    print(f"Debug - Payload: {payload}")
     
     headers = {"Content-Type": "application/json"}
     if api_key:
         headers["Authorization"] = f"Bearer {api_key}"
     
+    print(f"Debug - Headers: {headers}")
+    
     response = requests.post(api_url, json=payload, headers=headers)
+    print(f"Debug - Response status: {response.status_code}")
+    print(f"Debug - Response content: {response.text}")
+    
     response.raise_for_status()  # This will raise an exception for HTTP errors
     return response.json()
 

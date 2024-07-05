@@ -22,12 +22,12 @@ if prompt := st.chat_input("What is your question?"):
 
     # Get response from Langflow
     response = run_flow(
-    message=prompt,
-    endpoint=FLOW_ID,
-    output_type="chat",
-    input_type="chat",
-    tweaks=TWEAKS,
-    api_key="sk-zMgHX6Dmos8GLD6Gy-zUBOMqnKDy49Rl0tWChFNiOlc"  # Add this if you have an API key
+        message=prompt,
+        endpoint=FLOW_ID,
+        output_type="chat",
+        input_type="chat",
+        tweaks=TWEAKS,
+        api_key="sk-zMgHX6Dmos8GLD6Gy-zUBOMqnKDy49Rl0tWChFNiOlc"  # Add this if you have an API key
     )  
     st.write("Debug - Raw response:", response)
 

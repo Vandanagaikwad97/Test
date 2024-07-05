@@ -14,7 +14,7 @@ except ImportError:
 
 
 # Use the base URL of your deployed Langflow instance
-BASE_URL = os.environ.get("LANGFLOW_API_URL", "https://langflow-y83e.onrender.com")
+BASE_URL = os.environ.get("LANGFLOW_API_URL", "https://astra.datastax.com/langflow/b9fc9396-12de-4ab5-bb0a-ac397c854d0f")
 BASE_API_URL = f"{BASE_URL}/api/v1/process"  # Note the change from /run to /process
 FLOW_ID = os.environ.get("LANGFLOW_FLOW_ID", "37cae1da-25bb-49dc-a1a0-a632d8c0e87d")
 

@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 from argparse import RawTextHelpFormatter
 import requests
 from typing import Optional
@@ -10,11 +11,13 @@ except ImportError:
     warnings.warn("Langflow provides a function to help you upload files to the flow. Please install langflow to use it.")
     upload_file = None
 
-BASE_API_URL = "https://langflow-y83e.onrender.com/all"
-FLOW_ID = "37cae1da-25bb-49dc-a1a0-a632d8c0e87d"
-ENDPOINT = "" # You can set a specific endpoint name in the flow settings
 
-# You can tweak the flow by adding a tweaks dictionary
+
+# Use the base URL of your deployed Langflow instance
+BASE_URL = os.environ.get("LANGFLOW_API_URL", "https://langflow-y83e.onrender.com/all")
+BASE_API_URL = f"{BASE_URL}/api/v1/process"  # Note the change from /run to /process
+FLOW_ID = os.environ.get("LANGFLOW_FLOW_ID", "37cae1da-25bb-49dc-a1a0-a632d8c0e87d")
+
 # e.g {"OpenAI-XXXXX": {"model_name": "gpt-4"}}
 TWEAKS = {
   "TextInput-Wuf7F": {},

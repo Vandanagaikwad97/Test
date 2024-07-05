@@ -32,18 +32,14 @@ if prompt := st.chat_input("What is your question?"):
     st.write("Debug - Raw response:", response)
 
     assistant_response = "I'm sorry, I couldn't generate a response."
-    if isinstance(response, dict):
-        if "detail" in response:
-            st.error(f"API Error: {response['detail']}")
-        elif 'outputs' in response:
-            # ... (your existing parsing logic)
-        else:
-            st.warning("Unexpected response format from API")
-    else:
-        st.warning("Response is not a dictionary as expected")
-
-    
-
+    if isinstance(response, dict) and 'outputs' in response:
+        outputs = response['outputs']
+        if outputs and isinstance(outputs[0], dict) and 'outputs' in outputs[0]:
+            inner_outputs = outputs[0]['outputs']
+            if inner_outputs and isinstance(inner_outputs[0], dict) and 'results' in inner_outputs[0]:
+                results = inner_outputs[0]['results']
+                if 'result' in results:
+                    assistant_response = results['result']
     with st.chat_message("assistant"):
         st.markdown(assistant_response)
     # Add assistant response to chat history

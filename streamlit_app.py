@@ -27,7 +27,7 @@ if prompt := st.chat_input("What is your question?"):
     output_type="chat",
     input_type="chat",
     tweaks=TWEAKS,
-    api_key=None  # Add this if you have an API key
+    api_key="sk-zMgHX6Dmos8GLD6Gy-zUBOMqnKDy49Rl0tWChFNiOlc"  # Add this if you have an API key
     )  
     st.write("Debug - Raw response:", response)
 

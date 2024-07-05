@@ -39,8 +39,8 @@ if prompt := st.chat_input("What is your question?"):
             # ... (your existing parsing logic)
         else:
             st.warning("Unexpected response format from API")
-        else:
-            st.warning("Response is not a dictionary as expected")
+    else:
+        st.warning("Response is not a dictionary as expected")
 
     
 
